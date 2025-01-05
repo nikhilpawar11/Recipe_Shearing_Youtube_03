@@ -1,3 +1,4 @@
+
 package com.nikhil.orm.entities;
 
 import jakarta.persistence.Column;
