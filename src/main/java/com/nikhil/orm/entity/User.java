@@ -2,6 +2,7 @@ package com.nikhil.orm.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,6 +21,7 @@ import lombok.ToString;
 public class User {
 	
 	@Column(name = "User_Id")
+	@Id
 	private String id;
 	
 	@Column(name = "User_Name")
