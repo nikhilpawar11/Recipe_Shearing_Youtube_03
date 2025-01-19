@@ -29,8 +29,7 @@ import lombok.ToString;
 public class Recipe {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private String id;
 	
 	private String title;
 	

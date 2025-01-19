@@ -45,7 +45,7 @@ public class RecipeController {
 	}
 	
 	@PutMapping("/updateRecipe/{recipeId}")
-	public ResponseEntity<RecipeDto> updateRecipe(@RequestBody RecipeDto recipeDto, @PathVariable int recipeId){
+	public ResponseEntity<RecipeDto> updateRecipe(@RequestBody RecipeDto recipeDto, @PathVariable String recipeId){
 		
 		RecipeDto recipe = recipeService.updateRecipe(recipeDto, recipeId);
 		
@@ -54,7 +54,7 @@ public class RecipeController {
 	}
 	
 	@DeleteMapping("/deleteRecipe/{recipeId}")
-	public ResponseEntity<ApiMessageResponse> deleteRecipe(@PathVariable int recipeId){
+	public ResponseEntity<ApiMessageResponse> deleteRecipe(@PathVariable String recipeId){
 		
 		recipeService.deleteRecipe(recipeId);
 		
@@ -65,7 +65,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/getRecipeById/{recipeId}")
-	public ResponseEntity<RecipeDto> getRecipeById(@PathVariable int recipeId){
+	public ResponseEntity<RecipeDto> getRecipeById(@PathVariable String recipeId){
 		
 		RecipeDto recipe = recipeService.getRecipeById(recipeId);
 		
@@ -96,5 +96,13 @@ public class RecipeController {
 		
 	}
 	
+	@GetMapping("/getRecipeByTitle/{title}")
+	public ResponseEntity<RecipeDto> getRecipeByTitle(@PathVariable String title){
+		
+		RecipeDto recipe = recipeService.getRecipeByTitle(title);
+		
+		return new ResponseEntity<>(recipe, HttpStatus.OK);
+		
+	}
 	
 }

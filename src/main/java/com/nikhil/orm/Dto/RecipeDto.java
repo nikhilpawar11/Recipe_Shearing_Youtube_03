@@ -21,7 +21,7 @@ import lombok.ToString;
 @ToString
 public class RecipeDto {
 
-	private int id;
+	private String id;
 
 	private String title;
 

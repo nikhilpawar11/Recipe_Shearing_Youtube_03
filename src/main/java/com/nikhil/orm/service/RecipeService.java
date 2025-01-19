@@ -12,13 +12,13 @@ public interface RecipeService {
 	public RecipeDto createRecipe(RecipeDto recipeDto, UserDto userDto);
 	
 	// update recipe
-	public RecipeDto updateRecipe(RecipeDto recipeDto, int recipeId);
+	public RecipeDto updateRecipe(RecipeDto recipeDto, String recipeId);
 	
 	// delete recipe
-	public void deleteRecipe(int recipeId);
+	public void deleteRecipe(String recipeId);
 	
 	// get recipe by id
-	public RecipeDto getRecipeById(int recipeId);
+	public RecipeDto getRecipeById(String recipeId);
 	
 	// get all recipe
 	public List<RecipeDto> getAllRecipe();
@@ -26,5 +26,8 @@ public interface RecipeService {
 	// get recipe with pagination
 	public PegiableResponse<RecipeDto> getRecipeWithPegination(int pageNumber, int pageSize, String sortBy, String sortDir);
 
+	// find recipe by title
+	public RecipeDto getRecipeByTitle(String title);
+	
 	
 }

@@ -2,6 +2,7 @@ package com.nikhil.orm.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -39,6 +40,7 @@ public class RecipeServiceImpl implements RecipeService {
 		
 		Recipe recipe = mapper.map(recipeDto, Recipe.class);
 		
+		recipe.setId(UUID.randomUUID().toString());
 		recipe.setTitle(recipeDto.getTitle());
 		recipe.setDescription(recipeDto.getDescription());
 		recipe.setImageUrl(recipeDto.getImageUrl());
@@ -51,7 +53,7 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public RecipeDto updateRecipe(RecipeDto recipeDto, int recipeId) {
+	public RecipeDto updateRecipe(RecipeDto recipeDto, String recipeId) {
 		
 		Recipe recipe = recipeRepo.findById(recipeId).orElseThrow(() -> new ResourceNotFoundException("Recipe not found with given recipe id "+recipeId));
 		
@@ -65,7 +67,7 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public void deleteRecipe(int recipeId) {
+	public void deleteRecipe(String recipeId) {
 		
 		Recipe recipe = recipeRepo.findById(recipeId).orElseThrow(() -> new ResourceNotFoundException("Recipe not found with given recipe id "+recipeId));
 		
@@ -74,7 +76,7 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public RecipeDto getRecipeById(int recipeId) {
+	public RecipeDto getRecipeById(String recipeId) {
 		
 		Recipe recipe = recipeRepo.findById(recipeId).orElseThrow(() -> new ResourceNotFoundException("Recipe not found with given recipe id "+recipeId));
 		
@@ -103,6 +105,14 @@ public class RecipeServiceImpl implements RecipeService {
 		PegiableResponse<RecipeDto> peginationResponse = Helper.getPeginationResponse(page, RecipeDto.class);
 		
 		return peginationResponse;
+	}
+
+	@Override
+	public RecipeDto getRecipeByTitle(String title) {
+		
+		Recipe recipe = recipeRepo.findByTitle(title).orElseThrow(() -> new ResourceNotFoundException("Recipe not found with given title "+title));
+		
+		return mapper.map(recipe, RecipeDto.class);
 	}
 
 
