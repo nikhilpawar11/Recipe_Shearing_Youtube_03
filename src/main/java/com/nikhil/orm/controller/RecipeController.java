@@ -86,7 +86,7 @@ public class RecipeController {
 	public ResponseEntity<PegiableResponse<RecipeDto>> getRecipeWithPegination(
 			@RequestParam(name = "pageNumber", defaultValue = "0", required = false) int pageNumber,
 			@RequestParam(name = "pageSize", defaultValue = "10", required = false) int pageSize,
-			@RequestParam(name = "sortBy", defaultValue = "name", required = false) String sortBy,
+			@RequestParam(name = "sortBy", defaultValue = "title", required = false) String sortBy,
 			@RequestParam(name = "sortDir", defaultValue = "asc", required = false) String sortDir
 			){
 		

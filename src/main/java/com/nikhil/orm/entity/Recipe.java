@@ -42,8 +42,6 @@ public class Recipe {
 	
 	private LocalDateTime createdAt;
 	
-	private List<Integer> likes = new ArrayList<>();
-	
 	@ManyToOne
 	private User user;
 	

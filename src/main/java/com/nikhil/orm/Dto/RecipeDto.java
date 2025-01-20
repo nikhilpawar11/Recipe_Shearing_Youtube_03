@@ -33,8 +33,6 @@ public class RecipeDto {
 
 	private LocalDateTime createdAt;
 
-	private List<Integer> likes = new ArrayList<>();
-
 	private User user;
 
 }
